@@ -3,7 +3,7 @@ import { AppShell } from "@/components/layout/AppShell";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Clock, Star } from "lucide-react";
 
-export const Route = createFileRoute("/courses")({
+export const Route = createFileRoute("/courses/")({
   head: () => ({ meta: [{ title: "Курсы Mentoria — Mentoria Hub" }] }),
   component: Courses,
 });
