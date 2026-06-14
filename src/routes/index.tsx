@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Target, BookOpen, Users, Trophy, Zap } from "lucide-react";
+import laurels from "@/assets/laurels.png";
+import gradIcon from "@/assets/grad-icon.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,30 +18,51 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <AppShell>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_color-mix(in_oklab,var(--primary)_15%,transparent),transparent_60%)]" />
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-16 pb-20 md:pt-24 md:pb-28 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-surface text-sm text-muted-foreground mb-6">
-            <Sparkles className="h-4 w-4 text-primary" />
-            Новая платформа для школьников Казахстана
+      {/* Hero — ielts.gg style */}
+      <section className="relative">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-12 pb-20 md:pt-20 md:pb-28 text-center">
+          {/* Big symbolic graphic */}
+          <div className="relative mx-auto w-full max-w-3xl aspect-[2/1] flex items-center justify-center">
+            <img
+              src={laurels}
+              alt=""
+              aria-hidden
+              width={1536}
+              height={768}
+              className="absolute inset-0 w-full h-full object-contain pointer-events-none select-none"
+            />
+            <div className="relative flex flex-col items-center justify-center">
+              <img
+                src={gradIcon}
+                alt=""
+                aria-hidden
+                width={220}
+                height={220}
+                className="w-32 sm:w-40 md:w-52 h-auto"
+              />
+              <div className="mt-2 text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-foreground leading-none">
+                100<span className="text-primary">%</span>
+              </div>
+            </div>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight max-w-4xl mx-auto leading-[1.1]">
-            Возможности + Асинхронные курсы<br className="hidden md:block" />
-            <span className="text-primary"> на одной платформе</span>
+
+          <h1 className="mt-8 text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] max-w-3xl mx-auto">
+            Поступи в ВУЗ мечты <br className="hidden sm:block" />
+            с первой попытки
           </h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Образовательный хаб для учеников средней и старшей школы Казахстана.
-            Найди свой путь к поступлению в ВУЗ.
+
+          <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
+            Mentoria Hub — возможности, курсы и менторы для школьников Казахстана. Всё для поступления в одном месте.
           </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-            <Button asChild size="lg" className="btn-hero text-base px-8 h-12">
+
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <Button asChild size="lg" className="rounded-full text-base px-7 h-12 bg-primary hover:bg-primary/90">
               <Link to="/opportunities">
-                Найти возможности <ArrowRight className="ml-2 h-4 w-4" />
+                Начать подготовку <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="text-base px-8 h-12">
-              <Link to="/courses">Начать обучение</Link>
+            <Button asChild size="lg" variant="outline" className="rounded-full text-base px-7 h-12">
+              <Link to="/courses">Платформа</Link>
             </Button>
           </div>
 
@@ -61,7 +84,12 @@ function Index() {
 
       {/* Features */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">Всё для твоего будущего</h2>
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-surface text-sm text-muted-foreground mb-4">
+            <Sparkles className="h-4 w-4 text-primary" /> Платформа
+          </div>
+          <h2 className="text-3xl md:text-4xl font-black">Всё для твоего будущего</h2>
+        </div>
         <div className="grid md:grid-cols-3 gap-6">
           {[
             { icon: Target, title: "Олимпиады и гранты", desc: "Подбор актуальных конкурсов и стипендий под твой профиль." },
