@@ -10,18 +10,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const navItems = [
-  { to: "/opportunities", label: "Каталог" },
-  { to: "/courses", label: "Курсы" },
-  { to: "/roadmap", label: "Роадмап" },
-  { to: "/dashboard", label: "Дашборд" },
-] as const;
-
 const langs = ["KZ", "RU", "EN"] as const;
 
 export function Header() {
-  const { theme, setTheme, lang, setLang } = useApp();
+  const { theme, setTheme, lang, setLang, t } = useApp();
   const [open, setOpen] = useState(false);
+  const navItems = [
+    { to: "/opportunities", label: t("nav_catalog") },
+    { to: "/courses", label: t("nav_courses") },
+    { to: "/roadmap", label: t("nav_roadmap") },
+    { to: "/dashboard", label: t("nav_dashboard") },
+  ] as const;
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur">
@@ -86,7 +85,7 @@ export function Header() {
           <div className="absolute inset-0 bg-black/50" onClick={() => setOpen(false)} />
           <div className="absolute right-0 top-0 h-full w-72 bg-background border-l border-border p-6 shadow-xl animate-in slide-in-from-right">
             <div className="flex items-center justify-between mb-6">
-              <span className="font-bold">Меню</span>
+              <span className="font-bold">{t("nav_menu")}</span>
               <button onClick={() => setOpen(false)} className="p-2 rounded-md hover:bg-muted">
                 <X className="h-5 w-5" />
               </button>
@@ -110,7 +109,7 @@ export function Header() {
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               >
                 {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-                {theme === "dark" ? "Светлая тема" : "Темная тема"}
+                {theme === "dark" ? t("theme_light") : t("theme_dark")}
               </Button>
               <div className="flex gap-2">
                 {langs.map((l) => (
