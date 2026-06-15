@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as OpportunitiesRouteImport } from './routes/opportunities'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as MentorRouteImport } from './routes/mentor'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CoursesRouteImport } from './routes/courses'
@@ -27,6 +28,11 @@ const RoadmapRoute = RoadmapRouteImport.update({
 const OpportunitiesRoute = OpportunitiesRouteImport.update({
   id: '/opportunities',
   path: '/opportunities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MentorRoute = MentorRouteImport.update({
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/courses': typeof CoursesRouteWithChildren
   '/dashboard': typeof DashboardRoute
   '/mentor': typeof MentorRoute
+  '/onboarding': typeof OnboardingRoute
   '/opportunities': typeof OpportunitiesRoute
   '/roadmap': typeof RoadmapRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/dashboard': typeof DashboardRoute
   '/mentor': typeof MentorRoute
+  '/onboarding': typeof OnboardingRoute
   '/opportunities': typeof OpportunitiesRoute
   '/roadmap': typeof RoadmapRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/courses': typeof CoursesRouteWithChildren
   '/dashboard': typeof DashboardRoute
   '/mentor': typeof MentorRoute
+  '/onboarding': typeof OnboardingRoute
   '/opportunities': typeof OpportunitiesRoute
   '/roadmap': typeof RoadmapRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/courses'
     | '/dashboard'
     | '/mentor'
+    | '/onboarding'
     | '/opportunities'
     | '/roadmap'
     | '/courses/$courseId'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/dashboard'
     | '/mentor'
+    | '/onboarding'
     | '/opportunities'
     | '/roadmap'
     | '/courses/$courseId'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/courses'
     | '/dashboard'
     | '/mentor'
+    | '/onboarding'
     | '/opportunities'
     | '/roadmap'
     | '/courses/$courseId'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   CoursesRoute: typeof CoursesRouteWithChildren
   DashboardRoute: typeof DashboardRoute
   MentorRoute: typeof MentorRoute
+  OnboardingRoute: typeof OnboardingRoute
   OpportunitiesRoute: typeof OpportunitiesRoute
   RoadmapRoute: typeof RoadmapRoute
 }
@@ -157,6 +170,13 @@ declare module '@tanstack/react-router' {
       path: '/opportunities'
       fullPath: '/opportunities'
       preLoaderRoute: typeof OpportunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mentor': {
@@ -230,6 +250,7 @@ const rootRouteChildren: RootRouteChildren = {
   CoursesRoute: CoursesRouteWithChildren,
   DashboardRoute: DashboardRoute,
   MentorRoute: MentorRoute,
+  OnboardingRoute: OnboardingRoute,
   OpportunitiesRoute: OpportunitiesRoute,
   RoadmapRoute: RoadmapRoute,
 }
