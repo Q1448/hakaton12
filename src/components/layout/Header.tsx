@@ -85,7 +85,7 @@ export function Header() {
           <div className="absolute inset-0 bg-black/50" onClick={() => setOpen(false)} />
           <div className="absolute right-0 top-0 h-full w-72 bg-background border-l border-border p-6 shadow-xl animate-in slide-in-from-right">
             <div className="flex items-center justify-between mb-6">
-              <span className="font-bold">Меню</span>
+              <span className="font-bold">{t("nav_menu")}</span>
               <button onClick={() => setOpen(false)} className="p-2 rounded-md hover:bg-muted">
                 <X className="h-5 w-5" />
               </button>
@@ -109,7 +109,7 @@ export function Header() {
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               >
                 {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-                {theme === "dark" ? "Светлая тема" : "Темная тема"}
+                {theme === "dark" ? t("theme_light") : t("theme_dark")}
               </Button>
               <div className="flex gap-2">
                 {langs.map((l) => (
