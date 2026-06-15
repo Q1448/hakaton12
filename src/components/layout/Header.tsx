@@ -10,18 +10,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const navItems = [
-  { to: "/opportunities", label: "Каталог" },
-  { to: "/courses", label: "Курсы" },
-  { to: "/roadmap", label: "Роадмап" },
-  { to: "/dashboard", label: "Дашборд" },
-] as const;
-
 const langs = ["KZ", "RU", "EN"] as const;
 
 export function Header() {
-  const { theme, setTheme, lang, setLang } = useApp();
+  const { theme, setTheme, lang, setLang, t } = useApp();
   const [open, setOpen] = useState(false);
+  const navItems = [
+    { to: "/opportunities", label: t("nav_catalog") },
+    { to: "/courses", label: t("nav_courses") },
+    { to: "/roadmap", label: t("nav_roadmap") },
+    { to: "/dashboard", label: t("nav_dashboard") },
+  ] as const;
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur">
