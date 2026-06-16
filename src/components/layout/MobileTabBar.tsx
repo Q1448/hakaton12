@@ -1,15 +1,17 @@
 import { Link } from "@tanstack/react-router";
 import { Home, Compass, BookOpen, Map, User } from "lucide-react";
-
-const items = [
-  { to: "/", label: "Главная", icon: Home },
-  { to: "/opportunities", label: "Каталог", icon: Compass },
-  { to: "/courses", label: "Курсы", icon: BookOpen },
-  { to: "/roadmap", label: "Roadmap", icon: Map },
-  { to: "/dashboard", label: "Профиль", icon: User },
-] as const;
+import { useApp } from "@/lib/app-context";
 
 export function MobileTabBar() {
+  const { t } = useApp();
+  const items = [
+    { to: "/", label: "Home", icon: Home },
+    { to: "/opportunities", label: t("nav_catalog"), icon: Compass },
+    { to: "/courses", label: t("nav_courses"), icon: BookOpen },
+    { to: "/roadmap", label: t("nav_roadmap"), icon: Map },
+    { to: "/dashboard", label: t("nav_dashboard"), icon: User },
+  ] as const;
+
   return (
     <nav className="md:hidden fixed bottom-0 inset-x-0 z-30 border-t border-border bg-background/95 backdrop-blur">
       <div className="grid grid-cols-5">
