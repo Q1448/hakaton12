@@ -12,7 +12,7 @@ import { scoreResume, type ResumeScore } from "@/lib/ai.functions";
 
 export const Route = createFileRoute("/courses/$courseId")({
   head: () => ({ meta: [{ title: "Курс — Mentoria Hub" }] }),
-  component: CoursePlayer;
+  component: CoursePlayer,
 });
 
 function CoursePlayer() {
